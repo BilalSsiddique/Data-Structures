@@ -102,6 +102,20 @@ class linkedlist:
         for data in list:
             self.insert_at_end(data)
 
+    def reverseLinked(self):
+        prev=None
+        iter= self.head
+        while iter:
+            next = iter.next  #save next pointer of current node
+            iter.next= prev    #Now we can update the next pointer of current node and point it towards none (becomes last node)
+            prev= iter   #Save the current node in previous so that when we will move to the next node we point next node next pointer to this node by using prev  
+            iter= next  # The reason why we save the next pointer (Now we can move forward)
+
+        # In the end the last node become head as the prev will be last node so we make it head
+        self.head=prev
+
+
+
 # Initialize Object
 ll = linkedlist()
 ll.insert_at_end(2)
@@ -121,4 +135,7 @@ ll.print()
 print(f'Length: {ll.llist_length()}')
 ll.middleLinked()
 ll.insertMultiple([11,12,13])
+ll.print()
+ll.reverseLinked()
+print("Reversed linked list")
 ll.print()
