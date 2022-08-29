@@ -107,7 +107,7 @@ class linkedlist:
         iter= self.head
         while iter:
             next = iter.next  #save next pointer of current node
-            iter.next= prev    #Now we can update the next pointer of current node and point it towards none (becomes last node)
+            iter.next= prev    #Now we can update the next pointer of current node and point it towards none (becomes last node) (first time) after this we use prev to update node next pointer to point backwards
             prev= iter   #Save the current node in previous so that when we will move to the next node we point next node next pointer to this node by using prev  
             iter= next  # The reason why we save the next pointer (Now we can move forward)
 
