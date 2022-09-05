@@ -69,11 +69,10 @@ class linkedlist:
 
     def middleLinked(self):
         import math
-        middle = self.llist_length()/2
-        if middle % 2 !=0: #return middle if length is odd
-            middle= math.floor(middle)
+        middle = self.llist_length()/2  # return middle if length is odd
+        if middle % 2 != 0:
+            middle = math.floor(middle)  # else return second middle element
 
-        #else return second middle element     
         iter = self.head
         count = 0
         while iter:
@@ -81,39 +80,42 @@ class linkedlist:
                 print(f"The middle element of linked list is: {iter.data}")
             count += 1
             iter = iter.next
-    def removeAt(self,index):
+
+    def removeAt(self, index):
         if index < 0 or index >= self.llist_length():
             raise Exception("Index Exceeded/Invalid")
-        if index==0:
+        if index == 0:
             print(f"Removed {index}th element from the linkedlist")
-            self.head=self.head.next
+            self.head = self.head.next
             return
 
-        iter= self.head
-        count=0
+        iter = self.head
+        count = 0
         while iter:
-            if count==index-1:
+            if count == index-1:
                 print(f"Removed indexed {count+1} element from the linkedlist")
-                iter.next=iter.next.next
+                iter.next = iter.next.next
                 break
-            count+=1
-            iter=iter.next
-    def insertMultiple(self,list):
+            count += 1
+            iter = iter.next
+
+    def insertMultiple(self, list):
         for data in list:
             self.insert_at_end(data)
 
     def reverseLinked(self):
-        prev=None
-        iter= self.head
+        prev = None
+        iter = self.head
         while iter:
-            next = iter.next  #save next pointer of current node
-            iter.next= prev    #Now we can update the next pointer of current node and point it towards none (becomes last node) (first time) after this we use prev to update node next pointer to point backwards
-            prev= iter   #Save the current node in previous so that when we will move to the next node we point next node next pointer to this node by using prev  
-            iter= next  # The reason why we save the next pointer (Now we can move forward)
+            next = iter.next  # save next pointer of current node
+            # Now we can update the next pointer of current node and point it towards none (becomes last node) (first time) after this we use prev to update node next pointer to point backwards
+            iter.next = prev
+            prev = iter  # Save the current node in previous so that when we will move to the next node we point next node next pointer to this node by using prev
+            # The reason why we save the next pointer (Now we can move forward)
+            iter = next
 
         # In the end the last node become head as the prev will be last node so we make it head
-        self.head=prev
-
+        self.head = prev
 
 
 # Initialize Object
@@ -134,7 +136,7 @@ ll.removeAt(4)
 ll.print()
 print(f'Length: {ll.llist_length()}')
 ll.middleLinked()
-ll.insertMultiple([11,12,13])
+ll.insertMultiple([11, 12, 13])
 ll.print()
 ll.reverseLinked()
 print("Reversed linked list")
